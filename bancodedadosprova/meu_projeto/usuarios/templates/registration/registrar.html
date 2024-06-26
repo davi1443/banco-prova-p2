@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar{% endblock %}
+
+{% block extracss %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/registrar.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Registrar</h1>
+
+        <form method="post" class="register-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Usuário:</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="id_password1">Senha:</label>
+                {{ form.password1 }}
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Confirmar Senha:</label>
+                {{ form.password2 }}
+            </div>
+            <button type="submit" class="btn-register">Registrar</button>
+        </form>
+
+        <p class="login-link">Possui conta registrada? <a href="{% url 'login' %}">Clique aqui!</a>.</p>
+    </div>
+{% endblock %}

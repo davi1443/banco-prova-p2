@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Lista de Eventos{% endblock %}
+
+{% block content %}
+    <h1>Lista de Eventos</h1>
+    <a href="{% url 'eventos_create' %}" class="btn btn-primary">Adicionar Eventos</a>
+    <ul>
+        {% for eventos in eventos %}
+            <li>{{ eventos }} - <a href="{% url 'eventos_update' eventos.id %}">Editar</a> | <a href="{% url 'eventos_delete' eventos.id %}">Deletar</a></li>
+        {% empty %}
+            <li>Nenhum evento foi registrado.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
